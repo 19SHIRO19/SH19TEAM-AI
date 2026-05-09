@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHIRO's PRODUCTION</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .message {
+            font-size: 1.8rem;
+            font-weight: 300;
+            line-height: 1.4;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 1.2s ease forwards 0.5s;
+        }
+
+        .company-name {
+            font-size: 2rem;
+            font-weight: bold;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: absolute;
+            display: flex;
+            align-items: center;
+        }
+
+        .letter {
+            display: inline-block;
+            transition: all 0.4s ease;
+            margin: 0 1px;
+        }
+
+        .apostrophe {
+            font-size: 1.4rem;
+            vertical-align: top;
+            margin: 0 1px;
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+            transform: translateY(-15px) scale(0.95) !important;
+        }
+
+        .fade-in {
+            opacity: 1 !important;
+            transform: scale(1) !important;
+        }
+
+        .glow {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 0 0 15px rgba(255, 255, 255, 0.5), 0 0 22px rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message-box" id="messageBox">
+            <div class="content-wrapper">
+                <div class="message" id="message">
+                    © All Rights Reserved. SHIRO's PRODUCTION company
+                </div>
+                <div class="company-name" id="companyName">
+                    <span class="letter">S</span>
+                    <span class="letter">H</span>
+                    <span class="letter">I</span>
+                    <span class="letter">R</span>
+                    <span class="letter">O</span>
+                    <span class="apostrophe">'</span>
+                    <span class="letter">s</span>
+                    <span class="letter">&nbsp;</span>
+                    <span class="letter">P</span>
+                    <span class="letter">R</span>
+                    <span class="letter">O</span>
+                    <span class="letter">D</span>
+                    <span class="letter">U</span>
+                    <span class="letter">C</span>
+                    <span class="letter">T</span>
+                    <span class="letter">I</span>
+                    <span class="letter">O</span>
+                    <span class="letter">N</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const messageBox = document.getElementById('messageBox');
+            const message = document.getElementById('message');
+            const companyName = document.getElementById('companyName');
+
+            // Начальная задержка перед трансформацией
+            setTimeout(() => {
+                // Плавное исчезновение исходного сообщения
+                message.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                message.classList.add('fade-out');
+
+                // Одновременно начинаем показ названия компании
+                setTimeout(() => {
+                    companyName.classList.add('fade-in');
+
+                    // Плавное уменьшение рамки
+                    messageBox.style.padding = '20px 25px';
+                    messageBox.style.borderRadius = '10px';
+
+                    // Добавление свечения ко всему тексту
+                    setTimeout(() => {
+                        companyName.classList.add('glow');
+
+                        // Через 2 секунды переходим на основной сайт
+                        setTimeout(() => {
+                            window.location.href = 'main.html';
+                        }, 2000);
+
+                    }, 600);
+
+                }, 400);
+
+            }, 3000); // Задержка перед началом анимации
+        });
+    </script>
+</body>
+</html>

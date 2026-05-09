@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SH19TEAM - Welcome</title>
+    <style>
+        /* Используем переменные из вашего основного стиля */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-blur: blur(28px) saturate(200%);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --accent-blue: rgba(59, 130, 246, 0.5);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* Фоновое изображение как в основном чате */
+            background-image: url('https://images.unsplash.com/photo-1617531653332-bd46c24f2068?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Ym13JTIwbTR8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        /* Затемняющая подложка */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            z-index: 1;
+        }
+
+        /* Стеклянная карточка[cite: 1] */
+        .glass-card {
+            position: relative;
+            z-index: 2;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Текст в два ряда */
+        .content-area {
+            margin-bottom: 35px;
+        }
+
+        .row-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .row-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Кнопка в стиле Glass/iOS */
+        .action-btn {
+            background: var(--accent-blue);
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: var(--glass-blur);
+            width: 100%;
+        }
+
+        .action-btn:hover {
+            transform: scale(1.02);
+            background: rgba(59, 130, 246, 0.7);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .action-btn:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="glass-card">
+        <div class="content-area">
+            <!-- Вставьте свой текст здесь -->
+            <div class="row-title">Добро пожаловать в нейросеть от SH19TEAM</div>
+            <div class="row-description">
+                Ваша персональная нейросеть готова к работе. <br>
+                Нажмите кнопку ниже, чтобы начать диалог. 
+                          Продолжая, вы принимаете условия пользования. 
+                Нейросеть находится на стадии тестрования.
+                        !!!ПЕРЕД НАЧАЛОМ ТРЕБУЕТСЯ ВКЛЮЧИТЬ VPN!!!
+            </div>
+        </div>
+
+        <button class="action-btn" id="toChat">Открыть чат</button>
+    </div>
+
+    <script>
+        // Перенаправление на chat.html
+        document.getElementById('toChat').addEventListener('click', () => {
+            window.location.href = 'chat.html';
+        });
+    </script>
+</body>
+</html>
